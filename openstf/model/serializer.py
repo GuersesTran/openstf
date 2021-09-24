@@ -134,6 +134,18 @@ class PersistentStorageSerializer(AbstractSerializer):
         joblib.dump(model, model_path)
 
     def load_model_from_path(self, model_path):
+        """Load model from path
+
+        Args:
+            model_path ([type]): Model path.
+
+        Raises:
+            FileNotFoundError: When an exception occurs while loading the model.
+                This could also be due to a changed structure of openstf.
+
+        Returns:
+            [type]: Loaded model
+        """
         # Load most recent model from disk
         try:
             self.logger.debug(f"Trying to load model from: {model_path}")
